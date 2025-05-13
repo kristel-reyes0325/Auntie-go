@@ -8,6 +8,6 @@ class AdminChatController extends Controller
 {
     public function index()
     {
-        return view('adminchat');
+        return view('admin.chat');
     }
 }

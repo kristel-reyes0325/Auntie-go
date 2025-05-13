@@ -104,25 +104,30 @@
                 <th class="px-4 py-2 text-right">Actions</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="border-t">
-                <td class="px-4 py-2">
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" class="form-checkbox text-green-600" />
-                        <span>00121</span>
-                    </div>
-                </td>
-                <td class="px-4 py-2">
-                    <div class="w-6 h-6 bg-gray-300 rounded"></div>
-                </td>
-                <td class="px-4 py-2">Victorian Chair</td>
-                <td class="px-4 py-2">₱ 250.00</td>
-                <td class="px-4 py-2">Furniture</td>
-                <td class="px-4 py-2 text-right">
-                    <iconify-icon icon="mdi:dots-horizontal"></iconify-icon>
-                </td>
-            </tr>
-        </tbody>
+<tbody>
+    @foreach ($products as $product)
+        <tr class="border-t">
+            <td class="px-4 py-2">
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" class="form-checkbox text-green-600" />
+                    <span>{{ $product->id }}</span>
+                </div>
+            </td>
+            <td class="px-4 py-2">
+                <div >
+                    <img src="{{ asset('assets/images/' .$product->product_image)}}" alt="{{ $product->product_name }}" class="w-6 h-6 bg-gray-300 rounded">
+                </div>
+            </td>
+            <td class="px-4 py-2">{{ $product->product_name }}</td>
+            <td class="px-4 py-2">₱ {{ number_format($product->retail_price, 2) }}</td>
+            <td class="px-4 py-2">{{ $product->category->name ?? 'N/A' }}</td>
+            <td class="px-4 py-2 text-right">
+                <iconify-icon icon="mdi:dots-horizontal"></iconify-icon>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
     </table>
 </div>
 

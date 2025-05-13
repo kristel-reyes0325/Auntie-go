@@ -62,7 +62,7 @@
                 <tbody>
                     @forelse($users ?? [] as $user)
                         <tr class="hover:bg-gray-50 border-b">
-                            <td class="py-3 px-6">{{ $user->name }}</td>
+                            <td class="py-3 px-6">{{ $user->first_name }} {{ $user->last_name }}</td>
                             <td class="py-3 px-6">{{ $user->email }}</td>
                             <td class="py-3 px-6">
                                 <span class="{{ $user->status === 'Active' ? 'text-green-600' : 'text-red-500' }}">

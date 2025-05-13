@@ -28,8 +28,9 @@
                 $tabs = [
                     'pending' => 'To Pay',
                     'payment recieved' => 'To ship',
+                    'ready for delivery' => 'For Delivery',
                     'ready for pick-up' => 'For Pick Up',
-                    'completed order' => 'Completed',
+                    'completed' => 'Completed',
                     'cancelled' => 'Cancelled',
                 ];
             @endphp

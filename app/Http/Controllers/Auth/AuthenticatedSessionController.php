@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         Log::info('Authenticated User:', ['user' => $user]);
 
         // Check if the user is an admin or not and redirect accordingly
-        if ($user->is_admin) {
+        if ($user->role === 'admin') {
             // Redirect to admin dashboard if the user is an admin
             return redirect()->route('admin.dashboard');
         }

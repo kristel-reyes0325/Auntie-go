@@ -56,22 +56,26 @@ Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 
 // My purchases
 Route::get('/my-purchases', [PurchaseController::class, 'index'])->name('purchases.index');
+Route::get('/my-purchases/completed', [OrderController::class, 'completedOrders'])->name('orders.completed');
+
 /*Route::get('/order-success/{order}', function ($orderId) {
     return view('order-success', ['orderId' => $orderId]);
 })->name('order.success');*/
 
 
 // Admin routes protected with 'admin' middleware
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/users', [AdminUsersController::class, 'index'])->name('admin.users');
     Route::get('/admin/products', [AdminProductController::class, 'index'])->name('admin.products');
-    Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+    Route::get('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
     Route::get('/admin/products/delete-history', [AdminProductController::class, 'deleteHistory'])->name('admin.products.deleteHistory');
     Route::put('/admin/products/{id}/restore', [AdminProductController::class, 'restore'])->name('admin.products.restore');
     Route::post('/admin/download-csv', [AdminController::class, 'downloadCsv'])->name('download.csv');
     Route::get('/admin/chat', [AdminChatController::class, 'index'])->name('admin.chat');
     Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
+    Route::patch('/admin/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+
 });
 
 // Authenticated user profile routes

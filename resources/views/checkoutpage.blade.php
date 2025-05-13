@@ -91,6 +91,9 @@
         background-color: white;
     }
 </style>
+@php
+    $user = auth()->user();
+@endphp
 
 <script src="https://unpkg.com/alpinejs" defer></script>
 
@@ -265,7 +268,7 @@
             orderType: '',
             showModal: false,
             delivery: {
-                full_name: '',
+                full_name:  ,
                 phone: '',
                 postal_code: '',
                 address: ''

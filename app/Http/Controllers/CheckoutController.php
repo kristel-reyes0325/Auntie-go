@@ -87,4 +87,11 @@ class CheckoutController extends Controller
 
         return redirect()->route('order.success');
     }
+    
+    public function checkoutPage()
+{
+    $user = auth()->user(); // assuming you're using Laravel Auth
+    return view('checkout', compact('user'));
+}
+
 }

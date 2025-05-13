@@ -3,36 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 
 class AdminProductController extends Controller
 {
     public function index()
     {
-        $products = [
-            [
-                'id' => 1,
-                'name' => 'Circuits Shirt',
-                'price' => 250,
-                'stock' => 20,
-                'status' => 'active',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Binary Tote Bag',
-                'price' => 150,
-                'stock' => 10,
-                'status' => 'inactive',
-            ],
-            [
-                'id' => 3,
-                'name' => 'Motherboard Mug',
-                'price' => 180,
-                'stock' => 25,
-                'status' => 'active',
-            ],
-        ];
+    $products = Product::with('category')->latest()->get(); // Assuming you have a category relation
 
-        return view('adminproducts', compact('products'));
+    return view('admin.products', compact('products'));
     }
 
     public function deleteHistory()

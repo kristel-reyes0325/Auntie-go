@@ -85,4 +85,14 @@ class OrderController extends Controller
     return view('checkout', compact('cartItems'));
 }
 
+
+public function completedOrders()
+{
+    $completedOrders = Order::where('user_id', auth()->id())
+                            ->where('status', 'completed')
+                            ->get();
+
+    return view('buyer.orders.completed', compact('completedOrders'));
+}
+
 }
